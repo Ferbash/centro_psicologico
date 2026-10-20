@@ -1,0 +1,262 @@
+/* Hoja de estilos principal para el sitio web del centro psicológico */
+
+/* ---------- Colores y valores reutilizables ---------- */
+:root {
+    --verde: #00796b;
+    --verde-oscuro: #004d40;
+    --verde-claro: #e0f2f1;
+    --texto: #333333;
+    --texto-suave: #5a6b6a;
+    --fondo: #f6f3f0;
+    --borde: #dee2e6;
+}
+
+/*  Base de la página  */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    /* Hace que el footer quede siempre abajo */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h2, h3, h4 { margin: 0 0 1rem; }
+
+/*  Header  */
+.header {
+    background: var(--verde);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header .logo {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header nav { display: flex; align-items: center; gap: 1.2rem; }
+
+.header nav a { color: #fff; text-decoration: none; font-weight: 500; }
+.header nav a:hover { text-decoration: underline; }
+
+/* Botón redondeado del header */
+.header nav .boton-header {
+    background: #d3f4ea;
+    color: var(--verde-oscuro);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+.header nav .boton-header:hover { background: #fff; text-decoration: none; }
+
+/* Contenido principal */
+.contenido {
+    flex: 1;                 /* ocupa el espacio libre y empuja el footer */
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Banner verde de bienvenida */
+.banner {
+    background: var(--verde);
+    color: #fff;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+}
+.banner h2 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+.banner p { margin: 0; }
+
+/*  Tarjeta  */
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+}
+
+.card h2.titulo {
+    text-align: center;
+    color: var(--verde);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+#dashboard-section h4 { color: var(--verde-oscuro); font-weight: 600; }
+
+hr { border: none; border-top: 1px solid var(--borde); margin: 1.5rem 0; }
+
+/* Pestañas (Login / Registro)  */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid var(--borde);
+    margin-bottom: 1.2rem;
+}
+
+.tab {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+    cursor: pointer;
+    margin-bottom: -2px;
+}
+.tab:hover { color: var(--verde); }
+.tab.active { color: var(--verde); border-bottom-color: var(--verde); }
+
+/* Solo se muestra el formulario activo */
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* Formularios */
+.campo { margin-bottom: 1rem; }
+
+.form-label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #495057;
+}
+
+.form-control,
+.form-select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.form-control:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2);
+}
+
+/*  Botones */
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.btn-primary { background: var(--verde); color: #fff; }
+.btn-primary:hover { background: var(--verde-oscuro); }
+
+.btn-success { background: #00897b; color: #fff; }
+.btn-success:hover { background: #00695c; }
+
+.btn-warning { background: #f2c14e; color: #3b2a00; }
+.btn-warning:hover { background: #e6b13a; }
+
+.btn-outline-danger { background: #fff; color: #b3261e; border-color: #b3261e; }
+.btn-outline-danger:hover { background: #b3261e; color: #fff; }
+
+.btn-sm { padding: 4px 14px; font-size: 0.9rem; }
+
+.w-100 { width: 100%; }
+
+/* Panel de usuario */
+.panel-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.panel-cabecera h3 { margin: 0; color: var(--texto-suave); }
+
+/*  Tablas de turnos */
+#lista-turnos-paciente,
+#lista-turnos-profesional { overflow-x: auto; }
+
+.table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+
+.table th {
+    text-align: left;
+    padding: 10px;
+    color: var(--texto-suave);
+    border-bottom: 2px solid var(--borde);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: middle;
+}
+
+.table tbody tr:hover { background: rgba(0, 121, 107, 0.06); }
+
+/* Estados de turno */
+.badge {
+    display: inline-block;
+    padding: 0.35em 0.8em;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.estado-pendiente    { background: #e7ecf0; color: #3c4a56; }
+.estado-aceptado     { background: #dcefe3; color: #1d5a37; }
+.estado-reprogramado { background: #fbecc8; color: #7a4a00; }
+.estado-cancelado    { background: #f6d9d6; color: #8c1d16; }
+
+/* Mensajes */
+.mensaje {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border-left: 4px solid;
+    margin-bottom: 1rem;
+}
+.mensaje-error { background: #fbeceb; border-color: #b3261e; color: #7a1914; }
+.mensaje-ok    { background: var(--verde-claro); border-color: var(--verde); color: var(--verde-oscuro); }
+
+/* Footer */
+.footer {
+    background: var(--verde);
+    color: #fff;
+    text-align: center;
+    padding: 1.2rem 1rem;
+}
+
+/* Utilidades*/
+/* main.js usa esta clase para mostrar u ocultar elementos */
+.d-none { display: none !important; }
+
+/*Celulares */
+@media (max-width: 576px) {
+    .header { flex-direction: column; gap: 0.6rem; }
+    .card { padding: 1.2rem; }
+    .banner { padding: 1.2rem; }
+    .table { font-size: 0.85rem; }
+}

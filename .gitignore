@@ -1,0 +1,11 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs de respaldo y simulación local generados por el backend
+api/avisos.log
+api/historias_resguardo.log
+
+# Posibles archivos de configuración local sensibles
+api/config.local.php
+.env

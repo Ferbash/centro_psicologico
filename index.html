@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Psicológico - Gestión Integral</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Header: barra verde superior -->
+    <header class="header">
+        <a href="index.html" class="logo">Centro Psicológico</a>
+        <nav>
+            <a href="#" onclick="mostrarTab('login'); return false;">Iniciar sesión</a>
+            <a href="#" class="boton-header" onclick="mostrarTab('register'); return false;">Registrarse</a>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="contenido">
+
+        <!-- Banner de bienvenida -->
+        <div class="banner">
+            <h2>Cuidá tu bienestar, pedí tu turno en minutos</h2>
+            <p>Gestioná tus consultas con profesionales de tu ciudad.</p>
+        </div>
+
+        <div class="card">
+            <h2 class="titulo">Centro Psicológico</h2>
+
+            <!-- Sección de Autenticación (Login / Registro) -->
+            <div id="auth-section">
+
+                <!-- Pestañas -->
+                <div class="tabs">
+                    <button class="tab active" id="login-tab" type="button" onclick="mostrarTab('login')">Iniciar Sesión</button>
+                    <button class="tab" id="register-tab" type="button" onclick="mostrarTab('register')">Registrarse</button>
+                </div>
+
+                <!-- Formulario de Login -->
+                <div class="tab-pane active" id="login-content">
+                    <form id="form-login">
+                        <div class="campo">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="campo">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                    </form>
+                </div>
+
+                <!-- Formulario de Registro -->
+                <div class="tab-pane" id="register-content">
+                    <form id="form-register">
+                        <div class="campo">
+                            <label class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="reg-nombre" required>
+                        </div>
+                        <div class="campo">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="reg-email" required>
+                        </div>
+                        <div class="campo">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="reg-password" required>
+                        </div>
+                        <div class="campo">
+                            <label class="form-label">Ciudad / Localidad</label>
+                            <input type="text" class="form-control" id="reg-ciudad" placeholder="Ej: Tres Arroyos, Buenos Aires" required>
+                        </div>
+                        <div class="campo">
+                            <label class="form-label">Rol</label>
+                            <select class="form-select" id="reg-rol" onchange="toggleRolFields()">
+                                <option value="paciente">Paciente</option>
+                                <option value="profesional">Profesional</option>
+                            </select>
+                        </div>
+                        <!-- Campos que cambian según el rol -->
+                        <div class="campo" id="campo-telefono">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="reg-telefono">
+                        </div>
+                        <div class="campo d-none" id="campos-profesional">
+                            <label class="form-label">Matrícula</label>
+                            <input type="text" class="form-control" id="reg-matricula">
+                            <label class="form-label" style="margin-top: 0.8rem;">Especialidad</label>
+                            <input type="text" class="form-control" id="reg-especialidad">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Panel de Usuario (oculto hasta iniciar sesión) -->
+            <div id="dashboard-section" class="d-none">
+                <div class="panel-cabecera">
+                    <h3 id="welcome-msg"></h3>
+                    <button class="btn btn-outline-danger btn-sm" onclick="cerrarSesion()">Cerrar Sesión</button>
+                </div>
+                <hr>
+                <!-- Contenido dinámico según el rol (lo genera main.js) -->
+                <div id="panel-contenido"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        © 2026 Centro Psicológico - Encontrá a tu profesional y pedí turno
+    </footer>
+
+    <!-- Cambia entre las pestañas de Login y Registro -->
+    <script>
+        function mostrarTab(nombre) {
+            var esLogin = (nombre === 'login');
+            document.getElementById('login-tab').classList.toggle('active', esLogin);
+            document.getElementById('register-tab').classList.toggle('active', !esLogin);
+            document.getElementById('login-content').classList.toggle('active', esLogin);
+            document.getElementById('register-content').classList.toggle('active', !esLogin);
+        }
+    </script>
+
+    <!-- Script principal de la aplicación -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
